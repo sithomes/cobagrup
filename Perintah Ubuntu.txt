@@ -1,0 +1,61 @@
+Ip Tcp : 192.168.43.33
+
+(Jika sudah sudo su ketika install ga pake sudo)
+
+install apache2
+apt-get install apache2
+y
+ufw app list
+ufw allow "Apache Full"
+clear
+
+install mysql-server
+apt-get install mysql-server
+sudo mysql_secure_installation
+y
+0
+pasword
+y
+y
+
+sudo apt install php libapache2-mod-php php-mysql
+y
+
+new
+sudo vim /etc/apache2/mods-enabled/dir.conf
+pindah index.php kedepan
+save shift+:wq
+
+service apache2 restart
+service apache2 status
+
+apt search php- | less
+sudo vim /var/www/html/info.php
+ (coding)
+<?php
+phpinfo();
+?>
+ctrl+:wq
+
+install phpmyadmin
+apt-get install php
+clear
+
+langkah 3 Phpmyadmin
+sudo apt install phpmyadmin php-mbstring php-gettext
+y
+next
+
+sudo mysql
+select user,authentication_string,plugin,host from mysql.user;
+alter user 'root'@'localhost' identified with mysql_native_password by '*****';
+flush privileges;
+
+
+ctrl+i
+insert (edit)
+-save
+esc -> shift :
+wq
+-exit
+shift+:qa!
